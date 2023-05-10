@@ -1,0 +1,20 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - '8080:3000'
+    volumes:
+      - './frontend:/opt/app'
+    environment:
+      - WATCHPACK_POLLING=true
+      - "CI:'true'"
+    restart: always
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - '4040:5000'
+    volumes:
+      - './backend:/opt/app'
+    restart: always
